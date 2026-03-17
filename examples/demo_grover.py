@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
 Demo: Grover's Search Algorithm
-================================
 Runs Grover's algorithm on a 3-qubit search space (8 items),
 searching for a single marked state. Demonstrates amplitude
 amplification and compares to theoretical predictions.
 """
 
+"""Demo: Grover's search algorithm."""
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -50,3 +50,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+for n in [2, 3, 4]:
+    r = run_grover_benchmark(num_qubits=n, shots=2048, seed=42)
+    print(f"\n{n} qubits (N={r['N']}, target=|{r['target_bitstring']}⟩):")
+    print(f"  Measured success prob:     {r['measured_success_prob']:.4f}")
+    print(f"  Theoretical success prob:  {r['theoretical_success_prob']:.4f}")
+    print(f"  Error:                     {r['prob_error']:.4f}")
+    top = sorted(r["top_counts"].items(), key=lambda x: -x[1])[:3]
+    for bs, count in top:
+        print(f"  |{bs}⟩: {count}")
