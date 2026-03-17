@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum-Like AI Dashboard</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/index.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="dashboard-container">
+        <!-- Header -->
+        <header class="glass-panel main-header">
+            <div class="logo-container">
+                <div class="logo-icon">Q</div>
+                <h1>Quantum-Like AI <span class="gradient-text">Dashboard</span></h1>
+            </div>
+            <div class="status-indicator">
+                <div class="pulse-dot"></div>
+                <span>Server Online</span>
+            </div>
+        </header>
+
+        <!-- Benchmark Navigation -->
+        <nav class="glass-panel nav-panel">
+            <button class="nav-btn active" data-target="agent-chat">Agent Chat</button>
+            <button class="nav-btn" data-target="qml">QML Classifier</button>
+            <button class="nav-btn" data-target="grover">Grover's Search</button>
+            <button class="nav-btn" data-target="qft">Quantum Fourier Transform</button>
+            <button class="nav-btn" data-target="vqe">VQE (H₂ Molecule)</button>
+            <button class="nav-btn" data-target="qaoa">QAOA (MaxCut)</button>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            
+            <!-- Agent Chat Panel -->
+            <section id="agent-chat" class="benchmark-panel active glass-panel">
+                <div class="panel-header">
+                    <h2>Quantum Emulation Agent</h2>
+                    <p class="subtitle">Chat with the LLM Orchestrator (Simulated)</p>
+                </div>
+                
+                <div class="chat-container">
+                    <div class="chat-history" id="chat-history">
+                        <div class="chat-message agent-msg">
+                            <div class="msg-avatar">Q</div>
+                            <div class="msg-bubble">
+                                Hello! I am the Quantum Emulation Agent. Ask me to simulate a quantum phenomenon like "Entangle 2 qubits" or "Show me a Bell state", and I will assemble the circuit, select the appropriate backend, and orchestrate the execution for you.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="e.g. Can you create a Bell state?" onkeypress="handleChatKey(event)">
+                        <button class="action-btn run-btn" onclick="sendChatMessage()">Send</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QML Panel -->
+            <section id="qml" class="benchmark-panel glass-panel" style="display: none;">
+                <div class="panel-header">
+                    <h2>Quantum Neural Network</h2>
+                    <p class="subtitle">Proof-of-Concept QML Binary Classifier</p>
+                </div>
+                <div class="controls-row">
+                    <div class="input-group">
+                        <label for="qml-layers">Ansatz Layers</label>
+                        <input type="number" id="qml-layers" value="2" min="1" max="5">
+                    </div>
+                    <div class="input-group">
+                        <label for="qml-iters">Training Epochs</label>
+                        <input type="number" id="qml-iters" value="40" min="10" max="100">
+                    </div>
+                    <button class="action-btn run-btn" onclick="runQML()">Train Classifier</button>
+                </div>
+                <div class="results-container" id="qml-results">
+                    <!-- Results injected here -->
+                    <div class="placeholder-text">Run optimization to train against toy dataset...</div>
+                </div>
+            </section>
+
+            <!-- Grover Panel -->
+            <section id="grover" class="benchmark-panel glass-panel" style="display: none;">
+                <div class="panel-header">
+                    <h2>Grover's Algorithm</h2>
+                    <p class="subtitle">Amplitude Amplification Search</p>
+                </div>
+                <div class="controls-row">
+                    <div class="input-group">
+                        <label for="grover-qubits">Number of Qubits</label>
+                        <input type="number" id="grover-qubits" value="3" min="2" max="10">
+                    </div>
+                    <div class="input-group">
+                        <label for="grover-shots">Shots</label>
+                        <input type="number" id="grover-shots" value="2048" min="100" max="100000">
+                    </div>
+                    <button class="action-btn run-btn" onclick="runGrover()">Initialize Simulation</button>
+                </div>
+                <div class="results-container" id="grover-results">
+                    <!-- Results injected here -->
+                    <div class="placeholder-text">Run simulation to see outputs...</div>
+                </div>
+            </section>
+
+            <!-- QFT Panel -->
+            <section id="qft" class="benchmark-panel glass-panel" style="display: none;">
+                <div class="panel-header">
+                    <h2>Quantum Fourier Transform</h2>
+                    <p class="subtitle">Basis Transformation & Phase Estimation</p>
+                </div>
+                <div class="controls-row">
+                    <div class="input-group">
+                        <label for="qft-qubits">Number of Qubits</label>
+                        <input type="number" id="qft-qubits" value="3" min="2" max="10">
+                    </div>
+                    <button class="action-btn run-btn" onclick="runQFT()">Validate against DFT</button>
+                </div>
+                <div class="results-container" id="qft-results">
+                    <div class="placeholder-text">Run validation to see fidelity matrix...</div>
+                </div>
+            </section>
+
+            <!-- VQE Panel -->
+            <section id="vqe" class="benchmark-panel glass-panel" style="display: none;">
+                <div class="panel-header">
+                    <h2>Variational Quantum Eigensolver</h2>
+                    <p class="subtitle">H₂ Ground-State Energy Estimation</p>
+                </div>
+                <div class="controls-row">
+                    <button class="action-btn run-btn" onclick="runVQE()">Calculate Energy Profile</button>
+                </div>
+                <div class="results-container" id="vqe-results">
+                    <div class="placeholder-text">Run optimization to see energy convergence...</div>
+                </div>
+            </section>
+
+            <!-- QAOA Panel -->
+            <section id="qaoa" class="benchmark-panel glass-panel" style="display: none;">
+                <div class="panel-header">
+                    <h2>QAOA MaxCut</h2>
+                    <p class="subtitle">4-Node Cycle Graph Cut Optimization</p>
+                </div>
+                <div class="controls-row">
+                    <button class="action-btn run-btn" onclick="runQAOA()">Optimize Graph Cut</button>
+                </div>
+                <div class="results-container" id="qaoa-results">
+                    <div class="placeholder-text">Run optimization to see cut performance...</div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Global Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <div class="loading-text">Simulating Quantum Kernel...</div>
+    </div>
+
+    <script src="static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+# Quantum-Like AI System Configuration
+# ======================================
+
+simulation:
+  max_qubits_statevector: 20        # Hard memory guard for dense statevector
+  max_qubits_stabilizer: 5000       # Clifford-only circuits
+  max_qubits_mps: 100               # MPS with truncation
+  default_shots: 1024
+  default_seed: 42
+
+mps:
+  max_bond_dimension: 64
+  truncation_threshold: 1.0e-10     # SVD singular-value cutoff
+  warn_truncation_error: 1.0e-6     # Warn if cumulative truncation error exceeds this
+
+noise:
+  enabled: false
+  depolarizing_rate: 0.001          # Per-gate depolarizing probability
+  bit_flip_rate: 0.0005
+  phase_flip_rate: 0.0005
+
+provenance:
+  store_results: true
+  output_dir: "./results"
+
+orchestrator:
+  default_backend: "statevector"
+  fallback_chain:
+    - "statevector"
+    - "stabilizer"
+    - "mps"
+  comparison_modes:
+    - "ideal"
+    - "noisy"
