@@ -1,0 +1,138 @@
+test_2qubit_grover (test_benchmarks.TestGroverBenchmark.test_2qubit_grover)
+Grover on 2 qubits should find the marked state. ... ok
+test_3qubit_grover (test_benchmarks.TestGroverBenchmark.test_3qubit_grover)
+Grover on 3 qubits should achieve high success probability. ... ok
+test_theoretical_prediction (test_benchmarks.TestGroverBenchmark.test_theoretical_prediction)
+Theoretical prediction should be close to 1 for optimal iterations. ... ok
+test_2qubit_qft (test_benchmarks.TestQFTBenchmark.test_2qubit_qft)
+QFT on 2 qubits should pass fidelity tests. ... ok
+test_3qubit_qft (test_benchmarks.TestQFTBenchmark.test_3qubit_qft)
+QFT on 3 qubits should produce results. ... ok
+test_h2_vqe (test_benchmarks.TestVQEBenchmark.test_h2_vqe)
+VQE should find energy close to exact for H\u2082. ... ok
+test_basic_construction (test_circuit_ir.TestQuantumCircuit.test_basic_construction) ... ok
+test_circuit_hash_deterministic (test_circuit_ir.TestQuantumCircuit.test_circuit_hash_deterministic) ... ok
+test_circuit_hash_differs (test_circuit_ir.TestQuantumCircuit.test_circuit_hash_differs) ... ok
+test_depth (test_circuit_ir.TestQuantumCircuit.test_depth) ... ok
+test_draw (test_circuit_ir.TestQuantumCircuit.test_draw) ... ok
+test_invalid_qubit (test_circuit_ir.TestQuantumCircuit.test_invalid_qubit) ... ok
+test_is_clifford_all_clifford (test_circuit_ir.TestQuantumCircuit.test_is_clifford_all_clifford) ... ok
+test_is_clifford_with_t (test_circuit_ir.TestQuantumCircuit.test_is_clifford_with_t) ... ok
+test_to_unitary_identity (test_circuit_ir.TestQuantumCircuit.test_to_unitary_identity)
+Empty circuit should give identity. ... ok
+test_to_unitary_x_gate (test_circuit_ir.TestQuantumCircuit.test_to_unitary_x_gate)
+X gate should flip |0\u27e9 to |1\u27e9. ... ok
+test_cnot_matrix (test_circuit_ir.TestQuantumGate.test_cnot_matrix)
+CNOT should have the correct 4x4 matrix. ... ok
+test_is_clifford (test_circuit_ir.TestQuantumGate.test_is_clifford) ... ok
+test_parametric_gate (test_circuit_ir.TestQuantumGate.test_parametric_gate)
+RY(\u03c0) should be equivalent to Y (up to phase). ... ok
+test_single_qubit_gate_matrix (test_circuit_ir.TestQuantumGate.test_single_qubit_gate_matrix)
+H gate matrix should be correct. ... ok
+test_half (test_metrics.TestApproximationRatio.test_half) ... ok
+test_optimal (test_metrics.TestApproximationRatio.test_optimal) ... ok
+test_zero_optimal (test_metrics.TestApproximationRatio.test_zero_optimal) ... ok
+test_basic (test_metrics.TestCountsToProbs.test_basic) ... ok
+test_error (test_metrics.TestEnergyError.test_error) ... ok
+test_exact (test_metrics.TestEnergyError.test_exact) ... ok
+test_bell_state (test_metrics.TestStateFidelity.test_bell_state) ... ok
+test_identical_states (test_metrics.TestStateFidelity.test_identical_states) ... ok
+test_orthogonal_states (test_metrics.TestStateFidelity.test_orthogonal_states) ... ok
+test_superposition (test_metrics.TestStateFidelity.test_superposition) ... ok
+test_all_success (test_metrics.TestSuccessProbability.test_all_success) ... ok
+test_no_success (test_metrics.TestSuccessProbability.test_no_success) ... ok
+test_partial (test_metrics.TestSuccessProbability.test_partial) ... ok
+test_arrays (test_metrics.TestTVD.test_arrays) ... ok
+test_disjoint_distributions (test_metrics.TestTVD.test_disjoint_distributions) ... ok
+test_identical_distributions (test_metrics.TestTVD.test_identical_distributions) ... ok
+test_bell_state_mps_vs_sv (test_mps.TestMPSBackend.test_bell_state_mps_vs_sv)
+MPS Bell state should match statevector. ... ERROR
+test_initial_state (test_mps.TestMPSBackend.test_initial_state)
+Empty circuit should give |00\u27e9. ... ok
+test_multi_qubit_agreement (test_mps.TestMPSBackend.test_multi_qubit_agreement)
+MPS should agree with statevector for small circuits. ... ERROR
+test_rejects_3qubit_gates (test_mps.TestMPSBackend.test_rejects_3qubit_gates)
+MPS should reject Toffoli gates. ... ok
+test_single_qubit_h (test_mps.TestMPSBackend.test_single_qubit_h)
+H gate should match statevector. ... ok
+test_truncation_error_tracking (test_mps.TestMPSBackend.test_truncation_error_tracking)
+Truncation error should be tracked. ... ERROR
+test_bell_state (test_stabilizer.TestStabilizerBackend.test_bell_state)
+H-CNOT on stabilizer should give ~50/50 entangled. ... ok
+test_initial_state (test_stabilizer.TestStabilizerBackend.test_initial_state)
+Empty circuit should give all |0\u27e9. ... ok
+test_larger_clifford (test_stabilizer.TestStabilizerBackend.test_larger_clifford)
+Should handle 10+ qubits efficiently. ... ok
+test_no_statevector (test_stabilizer.TestStabilizerBackend.test_no_statevector)
+Stabilizer does not provide statevector. ... ok
+test_non_clifford_rejected (test_stabilizer.TestStabilizerBackend.test_non_clifford_rejected)
+T gate should be rejected. ... ok
+test_ry_rejected (test_stabilizer.TestStabilizerBackend.test_ry_rejected)
+RY gate should be rejected. ... ok
+test_x_flip (test_stabilizer.TestStabilizerBackend.test_x_flip)
+X gate should flip qubit. ... ok
+test_bell_state (test_statevector.TestStatevectorBackend.test_bell_state)
+H-CNOT should create Bell state. ... ok
+test_hadamard_superposition (test_statevector.TestStatevectorBackend.test_hadamard_superposition)
+H|0\u27e9 should give equal superposition. ... ok
+test_initial_state (test_statevector.TestStatevectorBackend.test_initial_state)
+Empty circuit should give |0\u27e9. ... ok
+test_multi_qubit (test_statevector.TestStatevectorBackend.test_multi_qubit)
+GHZ state on 3 qubits. ... ok
+test_ry_rotation (test_statevector.TestStatevectorBackend.test_ry_rotation)
+RY(\u03c0/2) on |0\u27e9 should give equal superposition. ... ok
+test_seed_reproducibility (test_statevector.TestStatevectorBackend.test_seed_reproducibility)
+Same seed should give same counts. ... ok
+test_two_x_identity (test_statevector.TestStatevectorBackend.test_two_x_identity)
+XX = I. ... ok
+test_validation_too_many_qubits (test_statevector.TestStatevectorBackend.test_validation_too_many_qubits)
+Should raise for circuits exceeding max qubits. ... ok
+test_x_gate_flip (test_statevector.TestStatevectorBackend.test_x_gate_flip)
+X|0\u27e9 = |1\u27e9. ... ok
+
+======================================================================
+ERROR: test_bell_state_mps_vs_sv (test_mps.TestMPSBackend.test_bell_state_mps_vs_sv)
+MPS Bell state should match statevector.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\ai sample model\tests\test_mps.py", line 47, in test_bell_state_mps_vs_sv
+    mps_result = self.mps_backend.run(qc, shots=1, seed=42)
+  File "D:\ai sample model\quantum_kernel\backends\mps.py", line 286, in run
+    mps.apply_two_qubit_gate(mat, gate.qubits[0], gate.qubits[1])
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ai sample model\quantum_kernel\backends\mps.py", line 85, in apply_two_qubit_gate
+    theta = theta.reshape(bl * 2, 2 * br)
+ValueError: cannot reshape array of size 8 into shape (2,2)
+
+======================================================================
+ERROR: test_multi_qubit_agreement (test_mps.TestMPSBackend.test_multi_qubit_agreement)
+MPS should agree with statevector for small circuits.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\ai sample model\tests\test_mps.py", line 56, in test_multi_qubit_agreement
+    mps_result = self.mps_backend.run(qc, shots=1, seed=42)
+  File "D:\ai sample model\quantum_kernel\backends\mps.py", line 286, in run
+    mps.apply_two_qubit_gate(mat, gate.qubits[0], gate.qubits[1])
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ai sample model\quantum_kernel\backends\mps.py", line 85, in apply_two_qubit_gate
+    theta = theta.reshape(bl * 2, 2 * br)
+ValueError: cannot reshape array of size 8 into shape (2,2)
+
+======================================================================
+ERROR: test_truncation_error_tracking (test_mps.TestMPSBackend.test_truncation_error_tracking)
+Truncation error should be tracked.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\ai sample model\tests\test_mps.py", line 64, in test_truncation_error_tracking
+    result = self.mps_backend.run(qc, shots=10, seed=42)
+  File "D:\ai sample model\quantum_kernel\backends\mps.py", line 286, in run
+    mps.apply_two_qubit_gate(mat, gate.qubits[0], gate.qubits[1])
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ai sample model\quantum_kernel\backends\mps.py", line 85, in apply_two_qubit_gate
+    theta = theta.reshape(bl * 2, 2 * br)
+ValueError: cannot reshape array of size 8 into shape (2,2)
+
+----------------------------------------------------------------------
+Ran 58 tests in 0.546s
+
+FAILED (errors=3)
