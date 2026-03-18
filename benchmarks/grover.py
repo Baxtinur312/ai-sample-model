@@ -153,6 +153,8 @@ def build_grover_circuit(
         for gate in diffusion.gates:
             qc.gates.append(gate)
 
+    return qc
+
 
 # ---------------------------------------------------------------------------
 # Oracle and diffusion
@@ -285,62 +287,5 @@ def run_grover_benchmark(
         "total_shots": shots,
         "circuit_depth": circuit.depth,
         "circuit_gates": len(circuit.gates),
-    shots: int = 2048,
-    seed: Optional[int] = None,
-    target: Optional[int] = None,
-) -> Dict[str, Any]:
-    """
-    Run Grover's search benchmark.
-
-    Parameters
-    ----------
-    num_qubits : int
-        Number of search qubits (database size = 2^num_qubits).
-    shots : int
-        Number of measurement samples.
-    seed : int | None
-        RNG seed for reproducibility.
-    target : int | None
-        Index of the marked item. Defaults to 2^num_qubits - 1.
-
-    Returns
-    -------
-    dict with keys:
-        num_qubits, N, target, target_bitstring,
-        measured_success_prob, theoretical_success_prob, prob_error,
-        top_counts, circuit_depth
-    """
-    n = num_qubits
-    N = 2 ** n
-    if target is None:
-        target = N - 1
-
-    qc = _build_grover_circuit(n, target)
-    backend = StatevectorBackend()
-    result = backend.run(qc, shots=shots, seed=seed)
-
-    fmt = f"{{:0{n}b}}"
-    target_bs = fmt.format(target)
-    success_count = result.counts.get(target_bs, 0)
-    measured_prob = success_count / shots
-
-    # Theoretical success probability after optimal iterations
-    num_iters = max(1, math.floor(math.pi / 4 * math.sqrt(N)))
-    theta = math.asin(1.0 / math.sqrt(N))
-    theoretical_prob = math.sin((2 * num_iters + 1) * theta) ** 2
-
-    top_counts = dict(
-        sorted(result.counts.items(), key=lambda x: -x[1])[:8]
-    )
-
-    return {
-        "num_qubits": n,
-        "N": N,
-        "target": target,
-        "target_bitstring": target_bs,
-        "measured_success_prob": measured_prob,
-        "theoretical_success_prob": theoretical_prob,
-        "prob_error": abs(measured_prob - theoretical_prob),
-        "top_counts": top_counts,
-        "circuit_depth": qc.depth,
     }
+
