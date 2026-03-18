@@ -276,11 +276,11 @@ def _ansatz(params: np.ndarray) -> QuantumCircuit:
     params : array of length 4 (θ₀, θ₁, θ₂, θ₃)
     """
     qc = QuantumCircuit(2)
-    qc.ry(float(params[0]), 0)
-    qc.ry(float(params[1]), 1)
+    qc.ry(0, float(params[0]))
+    qc.ry(1, float(params[1]))
     qc.cnot(0, 1)
-    qc.ry(float(params[2]), 0)
-    qc.ry(float(params[3]), 1)
+    qc.ry(0, float(params[2]))
+    qc.ry(1, float(params[3]))
     return qc
 
 
